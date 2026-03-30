@@ -393,7 +393,7 @@ function dlEx(){
 function bE(){
   document.querySelector('.sb').addEventListener('click',function(e){
     var btn=e.target.closest('.cb');
-    ifif(!btn)return;
+    if(!btn)return;
     cur=btn.dataset.cat||'';
     scCat(cur);
   });
