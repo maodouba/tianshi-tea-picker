@@ -106,10 +106,9 @@ function r(){
     h+='<div class="cs"><div class="ch" id="ch_'+eid+'"><span class="chi">'+ic+'</span><span class="chn">'+lb+'</span><span class="ccnt">'+its.length+' 款</span><span class="ctgl up" id="tg_'+eid+'">&#x25BC;</span></div><div class="cbdy" id="bd_'+eid+'"><div class="tbl tbl-head"><div><input type="checkbox" id="ca_'+eid+'" /></div><div></div><div>产品名称 / 规格（主要原材料）</div><div>单位</div><div style="justify-content:flex-end">单价（元）</div><div style="justify-content:center">选择</div></div>';
     for(var pi=0;pi<its.length;pi++){
       var p=its[pi],sel=S[p.name],qty=sel?sel.qty:0,isS=!!sel;
-      var tag=p.tag?'<span class="pname-tag">'+p.tag.replace(/
-/g,' ')+'</span>':'';
-      var imgHtml=p.image?'<img src="./images/'+p.image+'" alt="" onerror="this.outerHTML='<div class=&quot;noimg&quot;>&#x1F4F7;</div>'" />':'<div class="noimg">&#x1F4F7;</div>';
-      var matHtml=p.material?'<div class="pname-mat">（'+p.material+'）</div>':'';
+      var tag=p.tag?'<span class="pname-tag">'+p.tag.replace(/\n/g,' ')+'</span>':'';
+            var imgHtml=p.image?'<img src="./images/'+p.image+'" alt="" />':'<div class="noimg">📷</div>';
+ matHtml=p.material?'<div class="pname-mat">（'+p.material+'）</div>':'';
       h+='<div class="tbl tr2'+(isS?' sel':'')+'" data-n="'+ea(p.name)+'"><div class="chk"><input type="checkbox"'+(isS?' checked':'')+' data-action="ds" data-n="'+ea(p.name)+'" /></div><div class="pimg">'+imgHtml+'</div><div class="pname">'+tag+'<div class="pname-main">'+p.name+'</div><div class="pname-spec">'+(p.spec||'标准规格')+'</div>'+matHtml+'</div><div class="punit">'+(p.unit||'份')+'</div><div class="pp">&#xA5;'+fm(p.sales_price)+' <small>/ '+(p.unit||'份')+'</small></div><div class="pq"><button data-action="cq" data-n="'+ea(p.name)+'" data-d="-1">&#x2212;</button><input type="number" value="'+qty+'" min="0" data-action="sq" data-n="'+ea(p.name)+'" /><button data-action="cq" data-n="'+ea(p.name)+'" data-d="1">+</button></div></div>';
     }
     h+='</div></div>';
